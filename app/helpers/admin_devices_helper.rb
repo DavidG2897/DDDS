@@ -1,0 +1,2 @@
+module AdminDevicesHelper
+end

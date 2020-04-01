@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fname:</strong>
+  <%= @contact.fname %>
+</p>
+
+<p>
+  <strong>Lname:</strong>
+  <%= @contact.lname %>
+</p>
+
+<p>
+  <strong>Cellphone:</strong>
+  <%= @contact.cellphone %>
+</p>
+
+<p>
+  <strong>Registrated at:</strong>
+  <%= @contact.created_at %>
+</p>
+
+<p>
+  <strong>Last updated at:</strong>
+  <%= @contact.updated_at %>
+</p>
+
+<%= link_to 'Back', contacts_path %>

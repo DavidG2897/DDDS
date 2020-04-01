@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Contacts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Cellphone</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contacts.each do |contact| %>
+      <tr>
+        <td><%= contact.fname %></td>
+        <td><%= contact.lname %></td>
+        <td><%= contact.cellphone %></td>
+        <td><%= link_to 'Show', contact %></td>
+        <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
+        <td><%= link_to 'Delete', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h4>TODO: add "Sync with device" button</h4>
+<h4>TODO: add validation of cellphone</h4>
+
+<br>
+
+<%= link_to 'New Contact', new_contact_path %>
+<%= link_to 'Back to profile', edit_user_registration_path %>

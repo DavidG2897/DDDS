@@ -1,0 +1,22 @@
+<h1>Register your device</h1>
+
+<% if @device.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@device.errors.count, "error") %> prohibited this device from being saved:</h2>
+
+      <ul>
+        <% @device.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= form_with scope: :device, url: devices_path, local: true do |f| %>
+	<p>
+		<%= f.text_field :dispid %><br>
+	</p>
+	<p>
+		<%= f.submit 'Register' %><br>
+	</p>
+<% end %>

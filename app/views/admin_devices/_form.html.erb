@@ -1,0 +1,22 @@
+<%= form_with(model: admin_device, local: true) do |form| %>
+  <% if admin_device.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(admin_device.errors.count, "error") %> prohibited this admin_device from being saved:</h2>
+
+      <ul>
+        <% admin_device.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :serial %>
+    <%= form.text_field :serial %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

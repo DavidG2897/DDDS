@@ -15,6 +15,8 @@ class ContactsController < ApplicationController
   # GET /contacts/new
   def new
     if Contact.where(user_id: current_user.id).count == 5
+      #TODO: make this alert call take style from _alerts
+      #FIXME: validate this at model
       redirect_to contacts_path, :alert => 'You already have 5 contacts'
     else
       @contact = Contact.new
@@ -32,6 +34,11 @@ class ContactsController < ApplicationController
       @contact.user_id = current_user.id
 
       if Contact.where(user_id: current_user.id, cellphone: @contact.cellphone).exists?
+        #Checking if contact is already registed with this code
+        #because using uniqueness: true at model will avoid 
+        #different users having the same contact, which is a valid scenario
+        #TODO: make this alert call take style from _alerts
+        #FIXME: validate this at model with dedicated function
         redirect_to new_contact_path, :alert => 'You have already registered this contact'
       else
         respond_to do |format|
@@ -49,13 +56,19 @@ class ContactsController < ApplicationController
   # PATCH/PUT /contacts/1
   # PATCH/PUT /contacts/1.json
   def update
-    respond_to do |format|
-      if @contact.update(contact_params)
-        format.html { redirect_to contacts_url, notice: 'Contact was successfully updated.' }
-        format.json { render :show, status: :ok, location: @contact }
-      else
-        format.html { render :edit }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
+    if Contact.where(user_id: current_user.id, cellphone: contact_params[:cellphone]).exists?
+      #TODO: make this alert call take style from _alerts
+      #FIXME, validate this at model with dedicated function
+      redirect_to edit_contact_path, :alert => 'You have already registered this contact'
+    else
+      respond_to do |format|
+        if @contact.update(contact_params)
+          format.html { redirect_to contacts_url, notice: 'Contact was successfully updated.' }
+          format.json { render :show, status: :ok, location: @contact }
+        else
+          format.html { render :edit }
+          format.json { render json: @contact.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

@@ -6,6 +6,10 @@
 		<%= link_to 'Register your device', new_device_path, method: :get %>
 	<% end %>
 	<%= button_to 'Log out', destroy_user_session_path, method: :delete %>
+
+	<% if current_user.admin %>
+		<%= link_to 'admin_devices', admin_devices_path %>
+	<% end %>
 <% else %>
 	<%= button_to 'Register', new_user_registration_path, method: :get %>
 	<%= button_to 'Log in', new_user_session_path, method: :get %>

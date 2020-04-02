@@ -1,5 +1,6 @@
 class AdminDevicesController < ApplicationController
   before_action :set_admin_device, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin
 
   # GET /admin_devices
   # GET /admin_devices.json
@@ -66,6 +67,14 @@ class AdminDevicesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_admin_device
       @admin_device = AdminDevice.find(params[:id])
+    end
+
+    def check_admin
+      if current_user && current_user.admin
+        return
+      else
+        redirect_to root_path, alert: 'You are not an admin'
+      end
     end
 
     # Only allow a list of trusted parameters through.

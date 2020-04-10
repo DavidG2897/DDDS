@@ -26,9 +26,7 @@
   </tbody>
 </table>
 
-<h4>TODO: add "Sync with device" button and functionality</h4>
-
-<br>
-
-<%= link_to 'New Contact', new_contact_path %>
+<% if current_user.contacts.count < 5 %>
+  <%= link_to 'New Contact', new_contact_path %>
+<% end %>
 <%= link_to 'Back to profile', edit_user_registration_path %>

@@ -43,6 +43,7 @@ class ContactsController < ApplicationController
       else
         respond_to do |format|
         if @contact.save
+          update_user_synched
           format.html { redirect_to contacts_url, notice: 'Contact was successfully created.' }
           format.json { head :no_content }
         else
@@ -63,6 +64,7 @@ class ContactsController < ApplicationController
     else
       respond_to do |format|
         if @contact.update(contact_params)
+          update_user_synched
           format.html { redirect_to contacts_url, notice: 'Contact was successfully updated.' }
           format.json { render :show, status: :ok, location: @contact }
         else
@@ -93,4 +95,10 @@ class ContactsController < ApplicationController
     def contact_params
       params.require(:contact).permit(:fname, :lname, :cellphone)
     end
+
+    def update_user_synched  
+      current_user.synched = false
+      current_user.save
+    end
+
 end

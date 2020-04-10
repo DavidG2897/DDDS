@@ -3,7 +3,7 @@ class Device < ApplicationRecord
 	validate :validate_dev_id
 	before_update :validate_dev_id
 	belongs_to :user
-
+	has_many :emergencies
 	def validate_dev_id
 		if AdminDevice.where(serial: self.dispid).exists?
 			return

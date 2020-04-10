@@ -45,6 +45,13 @@
     <%= link_to "Contacts", contacts_path %>
   <% end %>
 
+  <% if !@current_user.synched %>
+    <u1>Not synched</u1>
+    <%= link_to "Synch", '/synch/', method: :patch%>
+  <% else %>
+    <u1>Synched</u1>
+  <% end %>
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>

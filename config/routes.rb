@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   devise_for :users
   patch 'synch', to: 'sync#update'
   post  'emergency/create/:lat/:long/device/:devid', to: "emergencies#create"
+  get 'emergencies', to: 'emergencies#index'
 end

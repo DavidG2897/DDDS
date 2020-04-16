@@ -1,3 +1,3 @@
 class Emergency < ApplicationRecord
-  belongs_to :device
+  belongs_to :admin_device
 end

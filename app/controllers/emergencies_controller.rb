@@ -1,9 +1,13 @@
 class EmergenciesController < ApplicationController
-	skip_before_action :verify_authenticity_token
+	skip_before_action :verify_authenticity_token, only: [:create]
 
-	def show 
-		#TODO make a route for users to see their emergencies
-	end
+    def index
+      if !current_user.nil?
+        @emergencies = AdminDevice.find_by(serial: current_user.device.dispid).emergencies
+      else
+      	redirect_to root_path
+      end
+    end
 
 	def new
 		@emergency = Emergency.new
@@ -12,22 +16,20 @@ class EmergenciesController < ApplicationController
 	def create
 
 		#TODO: validate range of latitude and longitude
+		#TODO: validate format of lat and long
 
 		@emergency = Emergency.new
 		@emergency.lat  = params[:lat]
 		@emergency.long = params[:long]
 		if Device.where(dispid: params[:devid]).exists?
-			dev = Device.find_by(dispid: params[:devid])
-			@emergency.device_id = dev.id
+			dev = AdminDevice.find_by(serial: params[:devid])
+			@emergency.admin_device_id = dev.id
 			@emergency.save
+			#TODO get this at uC
+			render plain: 'success'
 		else
-			#TODO respond back with error
-			puts 'QUELAVERGA'
+			#TODO get this at uC
+			render plain: 'error'
 		end
 	end
-
-	def destroy
-		#TODO make only admin accounts be able to delete or modify emergencies
-	end
-
 end

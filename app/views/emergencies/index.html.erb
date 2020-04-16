@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Emergencies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Registered at</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @emergencies.each do |emergency| %>
+      <tr>
+        <td><%= emergency.id %></td>
+        <td><%= emergency.created_at %></td>
+        <td><%= emergency.lat %></td>
+        <td><%= emergency.long %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Back to profile', edit_user_registration_path %>

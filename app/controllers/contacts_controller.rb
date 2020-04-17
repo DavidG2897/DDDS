@@ -58,9 +58,20 @@ class ContactsController < ApplicationController
   # PATCH/PUT /contacts/1.json
   def update
     if Contact.where(user_id: current_user.id, cellphone: contact_params[:cellphone]).exists?
-      #TODO: make this alert call take style from _alerts
-      #FIXME, validate this at model with dedicated function
-      redirect_to edit_contact_path, :alert => 'You have already registered this contact'
+      if !(Contact.where(user_id: current_user.id, fname: contact_params[:fname]).exists? && Contact.where(user_id: current_user.id, lname: contact_params[:lname]).exists?)
+        respond_to do |format|
+          if @contact.update(contact_params)
+            format.html { redirect_to contacts_url, notice: 'Contact was successfully updated.' }
+            format.json { render :show, status: :ok, location: @contact }
+          else
+            format.html { render :edit }
+            format.json { render json: @contact.errors, status: :unprocessable_entity }
+          end
+        end
+      else
+        #TODO: make this alert call take style from _alerts
+        redirect_to edit_contact_path, :alert => 'You have already registered this contact'
+      end
     else
       respond_to do |format|
         if @contact.update(contact_params)

@@ -31,6 +31,7 @@ class DevicesController < ApplicationController
 		@device = Device.find(params[:id])
 		@device.admin_device_id = AdminDevice.where(serial: device_params[:dispid]).first&.id
 		if @device.update(device_params)
+			update_user_synched
 			redirect_to edit_user_registration_path
 		else
 			render 'edit'
@@ -41,5 +42,10 @@ class DevicesController < ApplicationController
 		def device_params
 			params.require(:device).permit(:dispid)
 		end
+
+		def update_user_synched  
+          current_user.synched = false
+          current_user.save
+        end
 
 end

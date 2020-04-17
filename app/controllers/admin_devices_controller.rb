@@ -56,7 +56,6 @@ class AdminDevicesController < ApplicationController
   # DELETE /admin_devices/1.json
   def destroy
     if !Device.where(admin_device_id: params[:id]).exists?
-    #FIXME check if admin device is associated with a user to avoid deletion
       @admin_device.destroy
       respond_to do |format|
         format.html { redirect_to admin_devices_url, notice: 'Admin device was successfully destroyed.' }

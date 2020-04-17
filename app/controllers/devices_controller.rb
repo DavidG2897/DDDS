@@ -17,7 +17,6 @@ class DevicesController < ApplicationController
 		if @device.save #first validate new device coudl be saved
 			if @user.save #then validate user coud be saved
 				#done in nested ifs to avoid saving failure at one save causing other save to be done either way
-				#TODO: send SMS to device using dispid
 				redirect_to edit_user_registration_path
 				else
 					render 'new'

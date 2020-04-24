@@ -15,18 +15,22 @@ class EmergenciesController < ApplicationController
 
 	def create
 
-		#TODO: validate range of latitude and longitude
-		#TODO: validate format of lat and long
+		#FIXME add conditional checking for db update
 
-		@emergency = Emergency.new
-		@emergency.lat  = params[:lat]
-		@emergency.long = params[:long]
 		if Device.where(dispid: params[:devid]).exists?
 			dev = AdminDevice.find_by(serial: params[:devid])
+			@emergency = Emergency.new
 			@emergency.admin_device_id = dev.id
-			@emergency.save
+			@emergency.save!
+			e_id = @emergency.id
+
+			@location = Location.new
+			@location.lat  = params[:lat].to_i
+			@location.long = params[:long].to_i
+ 			@location.emergency_id = e_id
+			@location.save!
 			#TODO get this at uC
-			render plain: 'success'
+			render plain: e_id
 		else
 			#TODO get this at uC
 			render plain: 'error'

@@ -7,11 +7,11 @@ class SyncController < ApplicationController
 			
 			msg = ''
 			contacts.each do |c|
-				msg = msg + '+52' + c.cellphone + ','
+				msg = msg + c.cellphone + ','
 			end
-			#TODO: add username to msg
+			msg = msg + current_user.email;
 			TwilioClient.new.send_sms(dest,msg)
-
+			
 			current_user.synched = true
 			current_user.save
 			redirect_to edit_user_registration_path

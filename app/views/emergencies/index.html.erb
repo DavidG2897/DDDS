@@ -7,8 +7,6 @@
     <tr>
       <th>ID</th>
       <th>Registered at</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,8 +16,7 @@
       <tr>
         <td><%= emergency.id %></td>
         <td><%= emergency.created_at %></td>
-        <td><%= emergency.lat %></td>
-        <td><%= emergency.long %></td>
+        <td><%= link_to 'Locations', emergency_locations_path(emergency.id) %></td>
       </tr>
     <% end %>
   </tbody>

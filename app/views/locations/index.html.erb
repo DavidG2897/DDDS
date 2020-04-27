@@ -9,6 +9,7 @@
       <th>Registered at</th>
       <th>Latitude</th>
       <th>Longitude</th>
+	  <th>Neighborhood</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,9 +21,14 @@
         <td><%= location.created_at %></td>
         <td><%= location.lat %></td>
         <td><%= location.long %></td>
+        <td><%= location.neighborhood.name %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to 'Back to emergencies', emergencies_path %>
+<% if (@all == 'false') %>
+	<%= link_to 'Back', '/emergencies?all=false' %>
+<% elsif (@all == 'true') %>
+	<%= link_to 'Back', '/emergencies?all=true' %>
+<% end %>

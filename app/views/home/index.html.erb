@@ -5,6 +5,9 @@
 	<% if current_user.device.nil? %>
 		<%= link_to 'Register your device', new_device_path, method: :get %>
 	<% end %>
+	<div class="field">
+		<%= link_to "All emergencies", '/emergencies?all=true', method: :get%>
+	</div>
 	<%= button_to 'Log out', destroy_user_session_path, method: :delete %>
 
 	<% if current_user.admin %>

@@ -7,6 +7,9 @@
     <tr>
       <th>ID</th>
       <th>Registered at</th>
+	  <% if (@all == 'true') %>
+	    <th>Neighborhood</th>
+	  <% end %>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +19,18 @@
       <tr>
         <td><%= emergency.id %></td>
         <td><%= emergency.created_at %></td>
-        <td><%= link_to 'Locations', emergency_locations_path(emergency.id) %></td>
+		<% if (@all == 'false') %>
+			<td><%= link_to 'Locations', emergency_locations_path(emergency.id, @all) %></td>
+		<% else %>
+			<td><%= emergency.locations.first.neighborhood.name %></td>
+		<% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to 'Back to profile', edit_user_registration_path %>
+<% if (@all == 'false') %>
+	<%= link_to 'Back to profile', edit_user_registration_path %>
+<% elsif (@all == 'true') %>
+	<%= link_to 'Home', root_path %>
+<% end %>

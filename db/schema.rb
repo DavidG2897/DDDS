@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_23_045525) do
+ActiveRecord::Schema.define(version: 2020_04_26_235914) do
 
   create_table "admin_devices", force: :cascade do |t|
     t.string "serial"
@@ -47,12 +47,20 @@ ActiveRecord::Schema.define(version: 2020_04_23_045525) do
   end
 
   create_table "locations", force: :cascade do |t|
-    t.integer "lat"
-    t.integer "long"
+    t.float "lat"
+    t.float "long"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "emergency_id"
+    t.integer "neighborhood_id"
     t.index ["emergency_id"], name: "index_locations_on_emergency_id"
+    t.index ["neighborhood_id"], name: "index_locations_on_neighborhood_id"
+  end
+
+  create_table "neighborhoods", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -74,4 +82,5 @@ ActiveRecord::Schema.define(version: 2020_04_23_045525) do
   add_foreign_key "devices", "users"
   add_foreign_key "emergencies", "admin_devices"
   add_foreign_key "locations", "emergencies"
+  add_foreign_key "locations", "neighborhoods"
 end

@@ -1,0 +1,81 @@
+<!-- FIXME: make real landing page, not this template, right now log in works -->
+<body id='page-top'>
+  <!-- Navigation -->
+  <nav class='navbar navbar-expand-lg navbar-light fixed-top py-3' id='mainNav'>
+    <div class='container'>
+      <!-- <a class='navbar-brand js-scroll-trigger' href='#page-top'>Homepage</a> -->
+      <button aria-controls='navbarResponsive' aria-expanded='false' aria-label='Toggle navigation' class='navbar-toggler navbar-toggler-right' data-target='#navbarResponsive' data-toggle='collapse' type='button'>
+        <span class='navbar-toggler-icon'></span>
+      </button>
+      <div class='collapse navbar-collapse' id='navbarResponsive'>
+        <ul class='navbar-nav ml-auto my-2 my-lg-0'>
+		  <!-- No need yet
+          <li class='nav-item'>
+            <a class='nav-link js-scroll-trigger' href='#'>About</a>
+          </li>
+		  <li class='nav-item'>
+            <a class='nav-link js-scroll-trigger' href='#'>Contact</a>
+          </li>
+          -->
+		  <li class='nav-item'>
+            <a class='nav-link js-scroll-trigger' href='<%= new_user_session_path %>'>Log In</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Masthead -->
+  <header class='masthead'>
+    <div class='container h-100'>
+      <div class='row h-100 align-items-center justify-content-center text-center'>
+        <div class='col-lg-10 align-self-end'>
+          <h1 class='text-uppercase text-dark font-weight-bold'>DDDS</h1>
+        </div>
+        <div class='col-lg-8 align-self-baseline'>
+          <p class='text-dark font-weight-light mb-5'>Danger Detection Device and System</p>
+          <a class='btn btn-primary btn-xl js-scroll-trigger text-white' href='<%= new_user_registration_path %>'>Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Description section -->
+  <header class='masthead'>
+    <div class='container h-100'>
+      <div class='row h-100 align-items-center justify-content-center text-center'>
+		<div class='col-lg-10 align-self-end'>
+          <h1 class='text-white-75 font-weight-light'> 
+		  description description description description description description 
+		  description description description description description description 
+		  description description description description description description
+		  </h1>
+        </div>
+      </div>
+    </div>
+  </header>
+  <header class='masthead'>
+    <div class='container h-100'>
+      <div class='row h-100 align-items-center justify-content-center text-center'>
+        <div class='col-lg-4 ml-auto text-center mb-5 mb-lg-0'>
+          <i class='fas fa-phone fa-3x mb-3 text-muted'></i>
+          <div>NO_CONTACT_DEFINED</div>
+        </div>
+        <div class='col-lg-4 mr-auto text-center'>
+          <i class='fas fa-envelope fa-3x mb-3 text-muted'></i>
+          <!-- Make sure to change the email address in BOTH the anchor text and the link target below! -->
+          <!-- FIXME: either remove or create contact mail -->
+		  <!-- <a class='d-block' href='mailto:contact@yourwebsite.com'>contact@app.com</a> -->
+		  <div class='col-lg-4 ml-auto text-center mb-5 mb-lg-0'>
+          <i class='fas fa-phone fa-3x mb-3 text-muted'></i>
+          <div>NO_CONTACT_DEFINED</div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Footer -->
+  <footer class='bg-light py-5 fixed-bottom'>
+    <div class='container'>
+      <div class='small text-center text-muted'>Copyright © 2020 - Homepage - DDDS</div>
+    </div>
+  </footer>
+</body>

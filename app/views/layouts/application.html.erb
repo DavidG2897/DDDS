@@ -7,9 +7,10 @@
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Danger Detection Device and System" %>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+	<!-- TODO: need to add this -> #{Rails.application.credentials.google[:api_key]} -->
+	<%= javascript_include_tag get_google_api_req %>
 	<% if current_user %>
       <body id="page-top">
         <!-- Page Wrapper -->
@@ -30,7 +31,7 @@
             <%= render 'partials/footer' %>
           </div>
         </div>
-        <a class="scroll-to-top rounded" href="#page-top">
+        <a class="scroll-to-top rounded" href="/">
           <i class="fas fa-angle-up"></i>
         </a>
       </body>

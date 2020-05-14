@@ -4,7 +4,7 @@ class HomeController < ApplicationController
 	  if !current_user.device.nil?
 	    @user_emergencies = AdminDevice.find_by(serial: current_user.device.dispid).emergencies
 	  end
-	  @all_locs = ActiveRecord::Base.connection.execute("SELECT lat, long as lng, COUNT(lat||long) as cnt FROM Locations GROUP BY lat, long")
+	  @all_locs = ActiveRecord::Base.connection.execute("SELECT lat, long as lng, COUNT(lat) as cnt FROM Locations GROUP BY lat, long")
 	end
   end
 end

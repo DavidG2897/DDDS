@@ -55,7 +55,7 @@
   <% end %>
   
   <div class="field">
-    <%= link_to "My emergencies", '/emergencies?all=false', method: :get%>
+    <%= link_to "My emergencies", '/emergencies?stype=prof', method: :get%>
   </div>
 
   <div class="actions">
@@ -68,4 +68,4 @@
 
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<%= link_to "Home", root_path %>
+<%= link_to "Home", root_path, method: :get %>

@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   post  'emergency/create/:lat/:long/device/:devid', to: "emergencies#create"
   get 'emergencies', to: 'emergencies#index'
   post 'location/create/:lat/:long/emergency/:em_id', to: "locations#create"
-  match 'locations/:em_id/:all' => 'locations#index', :as => 'emergency_locations', via: :get
+  match 'locations/:em_id/:stype' => 'locations#index', :as => 'emergency_locations', via: :get
 end

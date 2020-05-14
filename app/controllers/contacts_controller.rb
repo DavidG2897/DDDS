@@ -15,7 +15,7 @@ class ContactsController < ApplicationController
   # GET /contacts/new
   def new
     if Contact.where(user_id: current_user.id).count == 5
-      #TODO: make this alert call take style from _alerts
+      #TODO: make this alert show properly, not needed but failsafe anyway
       #FIXME: validate this at model
       redirect_to contacts_path, :alert => 'You already have 5 contacts'
     else

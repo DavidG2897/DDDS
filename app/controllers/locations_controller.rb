@@ -5,10 +5,10 @@ class LocationsController < ApplicationController
 	#FIXME check whether current user id matches the user to which the locations are associated to
       if !current_user.nil?
       	em_id = params[:em_id]
-		@all = params[:all]
+		@stype = params[:stype]
       	@locations = Emergency.find(em_id).locations
       else
-	    redirect_to root_path, :alert => 'Please log in to check emergencies'
+	    redirect_to root_path, :alert => 'Please log in'
       end
   end
 

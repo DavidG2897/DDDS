@@ -1,9 +1,12 @@
+<!-- TODO: check why this links do not re-render map when redirecting to homepage -->
+
 <body id="page-top">
   <!-- Page Wrapper-->
   <div id="wrapper">
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
       <!-- Sidebar - Brand -->
+	  <!-- FIXME: remove root path link from DDDS logo -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<%= root_path %>">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
@@ -16,6 +19,7 @@
       <hr class="sidebar-divider my-0"/>
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
+	  <!-- FIXME: this herf does not re-render map -->
         <a class="nav-link" href="<%= root_path %>">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Home</span>
@@ -26,34 +30,31 @@
       <!-- Heading
       -->
       <div class="sidebar-heading">
-        Devices
+        Options
       </div>
-      <!-- Nav Item - Pages Collapse Menu
-      -->
-      <li class="nav-item">
-        <a aria-controls="collapseTwo" aria-expanded="true" class="nav-link collapsed" data-target="#collapseTwo" data-toggle="collapse" href="#">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Devices</span>
-        </a>
-        <div aria-labelledby="headingTwo" class="collapse" data-parent="#accordionSidebar" id="collapseTwo">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Devices:</h6>
-            <a class="collapse-item" href="<%= admin_devices_path %>">Admin Devices</a>
-          </div>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a aria-controls="collapseUtilities" aria-expanded="true" class="nav-link collapsed" data-target="#collapseUtilities" data-toggle="collapse" href="#">
-          <i class="fas fa-fw fa-address-book"></i>
+	  <% if current_user.admin %>
+	    <li class="nav-item">
+          <a class="nav-link" href="<%= admin_devices_path %>">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Admin Devices</span>
+          </a>
+        </li>
+	  <% end %>
+	  <li class="nav-item">
+        <a class="nav-link" href="<%= contacts_path %>">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Contacts</span>
         </a>
-        <div aria-labelledby="headingUtilities" class="collapse" data-parent="#accordionSidebar" id="collapseUtilities">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Contact Utilities</h6>
-            <a class="collapse-item" href="<%= contacts_path %>">Contact List</a>
-          </div>
-        </div>
       </li>
+	  <!-- FIXME: replace this conditinal with modal pop-up indicating device is not registered -->
+	  <% if !current_user.device.nil? %>
+	    <li class="nav-item">
+          <a class="nav-link" href="/emergencies?stype=home">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>My emergencies details</span>
+         </a>
+        </li>
+	  <% end %>
     </ul>
   </div>
 </body>

@@ -1,15 +1,12 @@
 <p id="notice"><%= notice %></p>
+<!-- TODO style this view -->
 
 <h1>Emergencies</h1>
 
 <table>
   <thead>
     <tr>
-      <th>ID</th>
       <th>Registered at</th>
-	  <% if (@all == 'true') %>
-	    <th>Neighborhood</th>
-	  <% end %>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,20 +14,15 @@
   <tbody>
     <% @emergencies.each do |emergency| %>
       <tr>
-        <td><%= emergency.id %></td>
         <td><%= emergency.created_at %></td>
-		<% if (@all == 'false') %>
-			<td><%= link_to 'Locations', emergency_locations_path(emergency.id, @all) %></td>
-		<% else %>
-			<td><%= emergency.locations.first.neighborhood.name %></td>
-		<% end %>
+		<td><%= link_to 'Locations', emergency_locations_path(emergency.id, @stype) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<% if (@all == 'false') %>
+<% if (@stype == 'prof') %>
 	<%= link_to 'Back to profile', edit_user_registration_path %>
-<% elsif (@all == 'true') %>
-	<%= link_to 'Home', root_path %>
+<% elsif (@stype == 'home') %>
+	<%= link_to 'Home', root_path, method: :get %>
 <% end %>

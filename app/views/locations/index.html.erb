@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+<!-- TODO style this view -->
 
 <h1>Locations</h1>
 
@@ -27,8 +28,10 @@
   </tbody>
 </table>
 
-<% if (@all == 'false') %>
-	<%= link_to 'Back', '/emergencies?all=false' %>
-<% elsif (@all == 'true') %>
-	<%= link_to 'Back', '/emergencies?all=true' %>
+<!-- TODO: render map here and provide table with details -->
+
+<% if (@stype == 'prof') %>
+	<%= link_to 'Back', '/emergencies?stype=prof' %>
+<% elsif (@stype == 'home') %>
+	<%= link_to 'Back', '/emergencies?stype=home' %>
 <% end %>

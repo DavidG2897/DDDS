@@ -1,18 +1,18 @@
 class EmergenciesController < ApplicationController
 	skip_before_action :verify_authenticity_token, only: [:create]
 
-    def index 
-	  @all = params[:all]
+    def index
+	  #FIXME: make alert show correctly
+	  @stype = params[:stype]
       if !current_user.nil?
-		if @all == 'true'
-			@emergencies = Emergency.all
-      	elsif current_user.device.nil? && @all == 'false'
+		if current_user.device.nil?
+		#FIXME: this does not re-render map when coming from sidebar, weird... check sidebar
 			redirect_to root_path, :alert => 'Please register your device to check your emergencies'
-		elsif !current_user.device.nil? && @all == 'false'
+		else
 			@emergencies = AdminDevice.find_by(serial: current_user.device.dispid).emergencies
 		end
       else
-      	redirect_to root_path, :alert => 'Please log in to check emergencies'
+      	redirect_to root_path, :alert => 'Please log in'
       end
     end
 

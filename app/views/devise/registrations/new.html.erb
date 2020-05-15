@@ -12,22 +12,22 @@
     <div class="card shadow h-100 py-2">
       <div class="card-body w-100">
 	  
-		<div class="row no-gutters align-items-center">
-		  <div class="row d-flex justify-content-center">
+		<div class="row d-flex no-gutters align-items-center">
+		  <div class="p-2">
 			<%= f.label :email %><br />
 		  </div>
-		  <div class="row no-gutters align-items-center">
+		  <div class="p-2">
 			<%= f.email_field :email, autofocus: true, autocomplete: "email" %>
 		  </div>
 		</div>
 
 		<div class="row no-gutters align-items-center">
-		  <div class="row d-flex justify-content-center">
+		  <div class="row d-flex justify-content-left">
 			<%= f.label :password %>
 		  </div>
-		  <div class="row d-flex justify-content-center">
+		  <div class="row d-flex justify-content-right">
 			  <% if @minimum_password_length %>
-			  <!-- <em>(<%= @minimum_password_length %> characters minimum)</em> -->
+			  <em>(<%= @minimum_password_length %> characters minimum)</em>
 			  <% end %><br />
 			  <%= f.password_field :password, autocomplete: "new-password" %>
 		  </div>

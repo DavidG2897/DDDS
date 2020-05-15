@@ -3,58 +3,25 @@
 <body id="page-top">
   <!-- Page Wrapper-->
   <div id="wrapper">
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-      <!-- Sidebar - Brand -->
-	  <!-- FIXME: remove root path link from DDDS logo -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<%= root_path %>">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">
-          DDDS
-        </div>
-      </a>
-      <!-- Divider-->
+	<!-- Sidebar -->
+	<div class="sidebar sidebar-dark bg-primary border-right" id="sidebar-wrapper">
+      <div class="sidebar-brand bg-primary align-items-center justify-content-center">
+	    <div class="sidebar-brand-text mx-6">
+	    DDDS
+	    </div>
+	  </div>
       <hr class="sidebar-divider my-0"/>
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
-	  <!-- FIXME: this herf does not re-render map -->
-        <a class="nav-link" href="<%= root_path %>">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Home</span>
-        </a>
-      </li>
-      <!-- Divider -->
-      <hr class="sidebar-divider"/>
-      <!-- Heading
-      -->
-      <div class="sidebar-heading">
-        Options
+      <div class="list-group list-group-flush">
+        <a href="<%= root_path %>" class="bg-primary list-group-item list-group-item-action text-white">Home</a>
+        <% if current_user.admin %>
+			<a href="<%= admin_devices_path %>" class="bg-primary list-group-item list-group-item-action text-white">Admin Devices</a>
+        <% end %>
+		<a href="<%= contacts_path %>" class="bg-primary list-group-item list-group-item-action text-white">Contacts</a>
+		<% if !current_user.device.nil? %>
+			<a href="" class="bg-primary list-group-item list-group-item-action text-white">My Emergencies details</a>
+		<% end %>
       </div>
-	  <% if current_user.admin %>
-	    <li class="nav-item">
-          <a class="nav-link" href="<%= admin_devices_path %>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Admin Devices</span>
-          </a>
-        </li>
-	  <% end %>
-	  <li class="nav-item">
-        <a class="nav-link" href="<%= contacts_path %>">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Contacts</span>
-        </a>
-      </li>
-	  <!-- FIXME: replace this conditinal with modal pop-up indicating device is not registered -->
-	  <% if !current_user.device.nil? %>
-	    <li class="nav-item">
-          <a class="nav-link" href="/emergencies?stype=home">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>My emergencies details</span>
-         </a>
-        </li>
-	  <% end %>
-    </ul>
+    </div>
   </div>
 </body>
+

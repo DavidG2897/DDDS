@@ -2,7 +2,7 @@
 
 <body id="page-top">
   <!-- Page Wrapper-->
-  <div id="wrapper">
+  <div id="wrapper float-left">
 	<!-- Sidebar -->
 	<div class="sidebar sidebar-dark bg-primary border-right" id="sidebar-wrapper">
       <div class="sidebar-brand bg-primary align-items-center justify-content-center">
@@ -18,7 +18,7 @@
         <% end %>
 		<a href="<%= contacts_path %>" class="bg-primary list-group-item list-group-item-action text-white">Contacts</a>
 		<% if !current_user.device.nil? %>
-			<a href="" class="bg-primary list-group-item list-group-item-action text-white">My Emergencies details</a>
+			<a href="/emergencies?stype=home" class="bg-primary list-group-item list-group-item-action text-white">My Emergencies details</a>
 		<% end %>
       </div>
     </div>

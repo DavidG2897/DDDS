@@ -1,3 +1,11 @@
+<!-- TODOs -->
+<!--
+	Remove notice/alerts from dedicated view rendering and move them to modal/popup
+	Make hover color of topbar buttons not black
+	Finish dedicated views (emergencies, contacts, admin devices, profile
+	If possible, include sidebar and remove buttons from topbar
+-->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,15 +25,12 @@
       <body id="page-top">
         <!-- Page Wrapper -->
         <div id="wrapper">
-          <%= render 'partials/sidebar' %>
           <div class="d-flex flex-column" id="content-wrapper">
-            <!-- Main Content
-            -->
+            <!-- Main Content -->
             <div id="content">
               <%= render 'partials/topbar' %>
               <%= render 'partials/logout_modal' %>
-              <!-- Content of each page goes here goes here
-              -->
+              <!-- Content of each page goes here goes here -->
               <div class="container-fluid">
                 <%= yield %>
               </div>
@@ -35,7 +40,9 @@
         </div>
       </body>
     <% else %>
-      <%= yield	   %>
+	  <div class="container-fluid">
+		<%= yield %>
+	  </div>
     <% end %>
   </head>
 </html>

@@ -1,9 +1,5 @@
 <!-- Topbar -->
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-  <!-- Sidebar Toggle (Topbar) -->
-  <button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop">
-    <i class="fa fa-bars"></i>
-  </button>
   <!-- Topbar Navbar -->
   <h6 class='text-white-75 font-weight-light'> 
   Danger Device and Detection System
@@ -68,8 +64,44 @@
     </li>
     <div class="topbar-divider d-none d-sm-block"></div>
 	-->
+	<!-- Nav Items -->
+	<div class="topbar-divider d-none d-sm-block"></div>
+	<li class="nav-item">
+      <a aria-expanded="false" aria-haspopup="true" class="nav-link" href="<%= root_path %>">
+        <span class="mr-2 d-none d-lg-inline text-gray-600 medium text-gray align-middle">
+		  Home
+		</span>
+      </a>
+    </li>
+	<% if current_user.admin %>
+	<div class="topbar-divider d-none d-sm-block"></div>
+	<li class="nav-item">
+	  <a aria-expanded="false" aria-haspopup="true" class="nav-link" href="<%= admin_devices_path %>">
+		<span class="mr-2 d-none d-lg-inline text-gray-600 medium text-gray align-middle">
+		  Admin Devices
+		</span>
+	  </a>
+	</li>
+	<% end %>
+	<div class="topbar-divider d-none d-sm-block"></div>
+	<li class="nav-item">
+	  <a aria-expanded="false" aria-haspopup="true" class="nav-link" href="<%= contacts_path %>">
+		<span class="mr-2 d-none d-lg-inline text-gray-600 medium text-gray align-middle">
+		  Contacts
+		</span>
+	  </a>
+	</li>
+	<% if !current_user.device.nil? %>
+		<li class="nav-item">
+		  <a aria-expanded="false" aria-haspopup="true" class="nav-link" href="/emergencies?stype=home">
+			<span class="mr-2 d-none d-lg-inline text-gray-600 medium text-gray align-middle">
+			  Contacts
+			</span>
+		  </a>
+		</li>
+	<% end %>
     <!-- Nav Item - User Information -->
-	
+	<div class="topbar-divider d-none d-sm-block"></div>
     <li class="nav-item dropdown no-arrow">
       <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="userDropdown" role="button">
         <span class="mr-2 d-none d-lg-inline text-gray-600 small">

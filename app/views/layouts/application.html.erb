@@ -16,28 +16,22 @@
 	<% if current_user %>
       <body id="page-top">
         <!-- Page Wrapper -->
-        <div id="wrapper" class="container-fluid">
-		  <div class="row">
-		    <div class="col-sm">
-		      <%= render 'partials/sidebar' %>
-			</div>
-          </div>
-		  <div class="row">
-		    <div class="col-sm">
-		      <div class="d-flex flex-column col-sm" id="content-wrapper">
-                <!-- Main Content -->
-                <div id="content">
-                  <%= render 'partials/topbar' %>
-                  <%= render 'partials/logout_modal' %>
-                  <!-- Content of each page goes here goes here -->
-                  <div class="container-fluid">
-                    <%= yield %>
-                  </div>
-                </div>
-                <%= render 'partials/footer' %>
+        <div id="wrapper">
+          <%= render 'partials/sidebar' %>
+          <div class="d-flex flex-column" id="content-wrapper">
+            <!-- Main Content
+            -->
+            <div id="content">
+              <%= render 'partials/topbar' %>
+              <%= render 'partials/logout_modal' %>
+              <!-- Content of each page goes here goes here
+              -->
+              <div class="container-fluid">
+                <%= yield %>
               </div>
-		    </div>
-		  </div>
+            </div>
+            <%= render 'partials/footer' %>
+          </div>
         </div>
       </body>
     <% else %>

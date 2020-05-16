@@ -32,9 +32,9 @@
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Are you admin?</div>
+            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total emergencies</div>
             <div class="h5 mb-0 font-weight-bold text-gray-800">
-              <%= current_user.admin %>
+              <%= @all_locs.length().to_s %>
             </div>
           </div>
           <div class="col-auto">
@@ -180,7 +180,7 @@
     <!-- User Emergencies -->
     <div class="card shadow mb-4" style="max-height: 832px">
       <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Your last 10 emergencies</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Your emergencies</h6>
       </div>
       <div class="card-body" style="max-height: 832px">
         <% if !@user_emergencies.nil? %>

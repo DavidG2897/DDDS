@@ -1,5 +1,5 @@
 <!-- Topbar -->
-<nav class="navbar navbar-expand navbar-light bg-light topbar mb-4 static-top shadow">
+<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
   <!-- Topbar Navbar -->
   <h6 class='text-white-75 font-weight-light'> 
   Danger Device and Detection System
@@ -65,66 +65,62 @@
     <div class="topbar-divider d-none d-sm-block"></div>
 	-->
 	<!-- Nav Items -->
-	<div class="d-flex flex-row bd-highlight mb-3">
-	  <div class="topbar-divider d-none d-sm-block"></div>
-
-	  <div class="p-2 bd-highlight align-middle">
+	<div class="topbar-divider d-none d-sm-block"></div>
+	<li class="nav-item">
+      <a aria-expanded="false" aria-haspopup="true" class="nav-link" href="<%= root_path %>" data-method="get">
+        <span class="mr-2 d-none d-lg-inline text-gray-600 medium text-gray align-middle">
+		  Home
+		</span>
+      </a>
+    </li>
+	<% if current_user.admin %>
+	<div class="topbar-divider d-none d-sm-block"></div>
+	<li class="nav-item">
+	  <a aria-expanded="false" aria-haspopup="true" class="nav-link" href="<%= admin_devices_path %>">
+		<span class="mr-2 d-none d-lg-inline text-gray-600 medium text-gray align-middle">
+		  Admin Devices
+		</span>
+	  </a>
+	</li>
+	<% end %>
+	<div class="topbar-divider d-none d-sm-block"></div>
+	<li class="nav-item">
+	  <a aria-expanded="false" aria-haspopup="true" class="nav-link" href="<%= contacts_path %>">
+		<span class="mr-2 d-none d-lg-inline text-gray-600 medium text-gray align-middle">
+		  Contacts
+		</span>
+	  </a>
+	</li>
+	<% if !current_user.device.nil? %>
 		<li class="nav-item">
-		  <%= link_to "Home", root_path, method: :get %>
-		</li>
-	  </div>
-		
-	  <% if current_user.admin %>
-		<div class="topbar-divider d-none d-sm-block"></div>
-		
-		<div class="p-2 bd-highlight align-middle">
-		  <li class="nav-item">
-		    <%= link_to "Admin Devices", admin_devices_path, method: :get %>
-		  </li>
-		</div>
-	  <% end %>
-		
-	  <% if !current_user.device.nil? %>
-		<div class="topbar-divider d-none d-sm-block"></div>
-		   
-		<div class="p-2 bd-highlight align-items-center">
-		  <li class="nav-item">
-		    <%= link_to "Contacts", contacts_path, method: :get %>
-		  </li>
-		</div>
-			
-		<div class="topbar-divider d-none d-sm-block h-100"></div>
-			
-		<div class="p-2 bd-highlight align-middle">
-		  <li class="nav-item">
-		    <%= link_to "My emergencies details", "/emergencies?stype=home", method: :get %>
-		  </li>
-		</div>
-	  <% end %>
-	  <!-- Nav Item - User Information -->
-	  <div class="topbar-divider d-none d-sm-block"></div>
-	  <div class="p-2 bd-highlight align-middle">
-	    <li class="nav-item dropdown no-arrow">
-	      <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="userDropdown" role="button">
-		    <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-		      <%= current_user.email %>
-		    </span>
+		  <a aria-expanded="false" aria-haspopup="true" class="nav-link" href="/emergencies?stype=home">
+			<span class="mr-2 d-none d-lg-inline text-gray-600 medium text-gray align-middle">
+			  My emergencies details
+			</span>
 		  </a>
-		  <!-- Dropdown - User Information -->
-		  <div aria-labelledby="userDropdown" class="dropdown-menu dropdown-menu-right shadow animated--grow-in">
-		    <a class="dropdown-item" href="<%= edit_user_registration_path %>">
-		  	  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-			  Profile
-		    </a>
-		    <div class="dropdown-divider"></div>
-		    <a class="dropdown-item" data-target="#logoutModal" data-toggle="modal" href="#">
-			  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-		      Logout
-		    </a>
-		  </div>
-	    </li>
-	  </div>
-	</div>
+		</li>
+	<% end %>
+    <!-- Nav Item - User Information -->
+	<div class="topbar-divider d-none d-sm-block"></div>
+    <li class="nav-item dropdown no-arrow">
+      <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="userDropdown" role="button">
+        <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+          <%= current_user.email %>
+        </span>
+      </a>
+      <!-- Dropdown - User Information -->
+      <div aria-labelledby="userDropdown" class="dropdown-menu dropdown-menu-right shadow animated--grow-in">
+        <a class="dropdown-item" href="<%= edit_user_registration_path %>">
+          <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+          Profile
+        </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" data-target="#logoutModal" data-toggle="modal" href="#">
+          <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+          Logout
+        </a>
+      </div>
+    </li>
   </ul>
 </nav>
 <!-- End of Topbar -->

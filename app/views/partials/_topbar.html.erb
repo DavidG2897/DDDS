@@ -78,7 +78,7 @@
 	<% if !current_user.device.nil? %>
 	  <div class="topbar-divider d-none d-sm-block"></div>
 	    <li class="nav-item">
-	      <%= link_to "Contacts", Contacts, method: :get %>
+	      <%= link_to "Contacts", contacts_path, method: :get %>
 	    </li>
 	  <div class="topbar-divider d-none d-sm-block"></div>
 		<li class="nav-item">

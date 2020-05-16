@@ -6,6 +6,7 @@ class HomeController < ApplicationController
 		@user_em_cnt = @user_emergencies.length()
 	  end
 	  @all_locs = ActiveRecord::Base.connection.execute("SELECT lat, long as lng, COUNT(lat) as cnt FROM Locations GROUP BY lat, long")
+	  @all_locs_cnt = @all_locs.length()
 	end
   end
 end

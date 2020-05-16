@@ -1,5 +1,5 @@
 <!-- Topbar -->
-<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+<nav class="navbar navbar-expand navbar-light bg-gradient-info topbar mb-4 static-top shadow">
   <!-- Topbar Navbar -->
   <h6 class='text-white-75 font-weight-light'> 
   Danger Device and Detection System
@@ -68,9 +68,7 @@
 	<div class="topbar-divider d-none d-sm-block"></div>
 	<li class="nav-item">
       <a aria-expanded="false" aria-haspopup="true" class="nav-link">
-        <span class="mr-2 d-none d-lg-inline text-gray-600 medium text-gray align-middle">
-		  <%= link_to "Home", root_path, method: :get %>
-		</span>
+	    <%= link_to "Home", root_path, method: :get %>
       </a>
     </li>
 	<% if current_user.admin %>

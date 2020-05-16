@@ -1,5 +1,5 @@
 <!-- Topbar -->
-<nav class="navbar navbar-expand navbar-light bg-info topbar mb-4 static-top shadow">
+<nav class="navbar navbar-expand navbar-light bg-light topbar mb-4 static-top shadow">
   <!-- Topbar Navbar -->
   <h6 class='text-white-75 font-weight-light'> 
   Danger Device and Detection System
@@ -72,28 +72,17 @@
 	<% if current_user.admin %>
 	<div class="topbar-divider d-none d-sm-block"></div>
 	<li class="nav-item">
-	  <a aria-expanded="false" aria-haspopup="true" class="nav-link" href="<%= admin_devices_path %>">
-		<span class="mr-2 d-none d-lg-inline text-gray-600 medium text-gray align-middle">
-		  Admin Devices
-		</span>
-	  </a>
+	  <%= link_to "Admin Devices", admin_devices_path, method: :get %>
 	</li>
 	<% end %>
-	<div class="topbar-divider d-none d-sm-block"></div>
-	<li class="nav-item">
-	  <a aria-expanded="false" aria-haspopup="true" class="nav-link" href="<%= contacts_path %>">
-		<span class="mr-2 d-none d-lg-inline text-gray-600 medium text-gray align-middle">
-		  Contacts
-		</span>
-	  </a>
-	</li>
 	<% if !current_user.device.nil? %>
+	  <div class="topbar-divider d-none d-sm-block"></div>
+	    <li class="nav-item">
+	      <%= link_to "Contacts", Contacts, method: :get %>
+	    </li>
+	  <div class="topbar-divider d-none d-sm-block"></div>
 		<li class="nav-item">
-		  <a aria-expanded="false" aria-haspopup="true" class="nav-link" href="/emergencies?stype=home">
-			<span class="mr-2 d-none d-lg-inline text-gray-600 medium text-gray align-middle">
-			  My emergencies details
-			</span>
-		  </a>
+		  <%= link_to "My emergencies details", "/emergencies?stype=home", method: :get %>
 		</li>
 	<% end %>
     <!-- Nav Item - User Information -->

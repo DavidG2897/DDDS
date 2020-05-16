@@ -67,9 +67,9 @@
 	<!-- Nav Items -->
 	<div class="topbar-divider d-none d-sm-block"></div>
 	<li class="nav-item">
-      <a aria-expanded="false" aria-haspopup="true" class="nav-link" href="<%= root_path %>">
+      <a aria-expanded="false" aria-haspopup="true" class="nav-link">
         <span class="mr-2 d-none d-lg-inline text-gray-600 medium text-gray align-middle">
-		  Home
+		  <%= link_to "Home", root_path, method: :get %>
 		</span>
       </a>
     </li>

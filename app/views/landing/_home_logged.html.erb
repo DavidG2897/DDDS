@@ -183,7 +183,7 @@
         <h6 class="m-0 font-weight-bold text-primary">My Emergencies</h6>
       </div>
       <div class="card-body">
-        <% if @user_emergencies.nil? %>
+        <% if !@user_emergencies.nil? %>
 		  <div class="pre-scrollable" style="max-height: 735px">
 			<table class="table table-striped">
 			  <thead>

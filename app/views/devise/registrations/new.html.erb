@@ -22,10 +22,10 @@
 		</div>
 
 		<div class="row d-flex no-gutters align-items-center h-100">
-		  <div class="p-2 align-middle">
+		  <div class="col-6">
 			<%= f.label :password %>
 		  </div>
-		  <div class="p-2 align-middle">
+		  <div class="col-6">
 			  <% if @minimum_password_length %>
 			  <em>(<%= @minimum_password_length %> characters minimum)</em>
 			  <% end %><br />
@@ -34,10 +34,10 @@
 		</div>
 
 		<div class="row d-flex no-gutters align-items-center h-100">
-		  <div class="p-2 align-middle">
+		  <div class="col-6">
 			<%= f.label :password_confirmation %><br />
 		  </div>
-		  <div class="p-2 align-middle">
+		  <div class="col-6">
 			<%= f.password_field :password_confirmation, autocomplete: "new-password" %>
 		  </div>
 		</div>

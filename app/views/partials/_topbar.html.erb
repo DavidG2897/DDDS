@@ -68,7 +68,7 @@
 	<div class="d-flex flex-row bd-highlight mb-3">
 	  <div class="topbar-divider d-none d-sm-block"></div>
 
-	  <div class="p-2 bd-highlight">
+	  <div class="p-2 bd-highlight align-middle">
 		<li class="nav-item">
 		  <%= link_to "Home", root_path, method: :get %>
 		</li>
@@ -77,7 +77,7 @@
 	  <% if current_user.admin %>
 		<div class="topbar-divider d-none d-sm-block"></div>
 		
-		<div class="p-2 bd-highlight">
+		<div class="p-2 bd-highlight align-middle">
 		  <li class="nav-item">
 		    <%= link_to "Admin Devices", admin_devices_path, method: :get %>
 		  </li>
@@ -87,7 +87,7 @@
 	  <% if !current_user.device.nil? %>
 		<div class="topbar-divider d-none d-sm-block"></div>
 		   
-		<div class="p-2 bd-highlight">
+		<div class="p-2 bd-highlight align-middle">
 		  <li class="nav-item">
 		    <%= link_to "Contacts", contacts_path, method: :get %>
 		  </li>
@@ -95,7 +95,7 @@
 			
 		<div class="topbar-divider d-none d-sm-block"></div>
 			
-		<div class="p-2 bd-highlight">
+		<div class="p-2 bd-highlight align-middle">
 		  <li class="nav-item">
 		    <%= link_to "My emergencies details", "/emergencies?stype=home", method: :get %>
 		  </li>
@@ -103,7 +103,7 @@
 	  <% end %>
 	  <!-- Nav Item - User Information -->
 	  <div class="topbar-divider d-none d-sm-block"></div>
-	  <div class="p-2 bd-highlight">
+	  <div class="p-2 bd-highlight align-middle">
 	    <li class="nav-item dropdown no-arrow">
 	      <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="userDropdown" role="button">
 		    <span class="mr-2 d-none d-lg-inline text-gray-600 small">

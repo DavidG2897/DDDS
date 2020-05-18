@@ -1,28 +1,80 @@
-<p id="notice"><%= notice %></p>
-<!-- TODO style this view -->
+<!-- Content Row
+-->
+<div class="row">
+  <div class="col-lg-3 mb-4">
+    <!-- User Emergencies -->
+    <div class="card shadow mb-4" style="max-height: 832px">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Your emergencies</h6>
+      </div>
+      <div class="card-body" style="max-height: 832px">
+        <% if !@user_emergencies.nil? %>
+		  <div class="pre-scrollable" style="max-height: 710px">
+			<table class="table table-striped">
+			  <thead>
+				<tr>
+				  <th scope="col">Registered at</th>
+				  <th scope="col">Neighborhood</th>
+				  <th colspan="3"></th>
+				</tr>
+			  </thead>
 
-<h1>Emergencies</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Registered at</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @emergencies.each do |emergency| %>
-      <tr>
-        <td><%= emergency.created_at %></td>
-		<td><%= link_to 'Locations', emergency_locations_path(emergency.id, @stype) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<% if (@stype == 'prof') %>
-	<%= link_to 'Back to profile', edit_user_registration_path %>
-<% elsif (@stype == 'home') %>
-	<%= link_to 'Home', root_path, method: :get %>
-<% end %>
+			  <tbody>
+			  
+				<% @user_emergencies.each do |emergency| %>
+				  <tr>
+					<td><%= emergency.created_at %></td>
+					<td><%= emergency.locations.first.neighborhood.name %></td>
+				  </tr>
+				<% end %>
+			  </tbody>
+			</table>			
+		  </div>
+		  <div class="row d-flex no-gutters align-items-center">
+		    <div class="col-7 h6 font-weight-bold text-primary text-left">
+			  Your total emergencies:
+			</div>
+			<div class="col-3 h6 text-center">
+		      <%= @user_em_cnt.to_s %>
+		    </div>
+		  </div>		    
+		<% else %>
+		  <h6 class='text-white-75 font-weight-light'> 
+		  You have no emergencies registered
+		  </h6>
+		<% end %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-lg-9 mb-4">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">All Emergencies</h6>
+      </div>
+	  <!-- Emergencies map -->
+      <div id="map-canvas" class="card-body" style="height: 775px"></div>
+	  <script type="text/javascript">
+		function initialize() {
+			var locs = <%= @first_loc_per_em.to_json.html_safe %>;
+			
+			var map;
+			var mapOptions = {
+			  center: new google.maps.LatLng(20.676313, -103.343706),
+			  zoom: 12,
+			};
+			map = new google.maps.Map(document.getElementById("map-canvas"),
+				mapOptions);
+				
+			for (var item in locs) {
+				var marker = new google.maps.Marker({
+				  position: {lat: locs[item].lat, lng: locs[item].lng},
+				  map: map
+				});
+			}
+		}
+		google.maps.event.addDomListener(window, 'load', initialize);
+	  </script>
+	</div>
+  </div>
+</div>

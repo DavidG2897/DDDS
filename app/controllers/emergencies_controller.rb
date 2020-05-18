@@ -9,6 +9,12 @@ class EmergenciesController < ApplicationController
 		#FIXME: this does not re-render map when coming from sidebar, weird... check sidebar
 			redirect_to root_path, :alert => 'Please register your device to check your emergencies'
 		else
+			@user_emergencies = AdminDevice.find_by(serial: current_user.device.dispid).emergencies.order(created_at: :desc)
+			@user_em_cnt = @user_emergencies.length()
+			
+			ad_id = AdminDevice.find_by(serial: current_user.device.dispid).id
+			query = "SELECT DISTINCT ON (emergency_id) * FROM (SELECT e.admin_device_id, l.lat, l.long as lng, e.created_at as e_ca, l.created_at, l.emergency_id FROM Emergencies e, Locations l WHERE e.id = l.emergency_id ORDER BY e.created_at, l.created_at ASC) subq WHERE admin_device_id = " + ad_id.to_s
+			@first_loc_per_em = ActiveRecord::Base.connection.execute(query)
 			@emergencies = AdminDevice.find_by(serial: current_user.device.dispid).emergencies
 		end
       else

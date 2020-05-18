@@ -92,13 +92,16 @@
 		  </span>
 	    </a>
 	  </li>
-	  <li class="nav-item">
-		<a aria-expanded="false" aria-haspopup="true" class="nav-link" href="/emergencies?stype=home">
-		  <span class="mr-2 d-none d-lg-inline text-gray-600 medium text-gray align-middle">
-			My emergencies details
-		  </span>
-		</a>
-	  </li>
+	  
+	  <% if %>
+	    <li class="nav-item">
+		  <a aria-expanded="false" aria-haspopup="true" class="nav-link" href="/emergencies?em=1", data-method="get">
+		    <span class="mr-2 d-none d-lg-inline text-gray-600 medium text-gray align-middle">
+			  My emergencies details
+		    </span>
+		  </a>
+	    </li>
+	  <% end %>
 	<% end %>
     <!-- Nav Item - User Information -->
 	<div class="topbar-divider d-none d-sm-block"></div>

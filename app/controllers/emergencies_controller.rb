@@ -15,6 +15,7 @@ class EmergenciesController < ApplicationController
 			ad_id = AdminDevice.find_by(serial: current_user.device.dispid).id
 			query = "SELECT DISTINCT ON (emergency_id) * FROM (SELECT e.admin_device_id, l.lat, l.long as lng, e.created_at as e_ca, l.created_at, l.emergency_id FROM Emergencies e, Locations l WHERE e.id = l.emergency_id ORDER BY e.created_at, l.created_at ASC) subq WHERE admin_device_id = " + ad_id.to_s + " AND emergency_id = " + em
 			@first_loc_per_em = ActiveRecord::Base.connection.execute(query)
+			@em_related_locs = Locations.where(emergency_id: em.to_i)			
 			@emergency = Emergency.find(em.to_i)
 		end
       else

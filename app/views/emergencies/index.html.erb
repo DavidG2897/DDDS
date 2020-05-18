@@ -75,14 +75,16 @@
 			});
 			
 			for (var item in locs) {
-				var marker = new google.maps.Marker({
-				  position: {lat: locs[item].lat, lng: locs[item].lng},
-				  map: map,
-				  title: locs[item].created_at,
-				  icon: {
-				    url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
-				  }
-				});
+				if (item != 0) {
+					var marker = new google.maps.Marker({
+					  position: {lat: locs[item].lat, lng: locs[item].lng},
+					  map: map,
+					  title: locs[item].created_at,
+					  icon: {
+						url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+					  }
+					});
+				}
 			}
 		}
 		google.maps.event.addDomListener(window, 'load', initialize);

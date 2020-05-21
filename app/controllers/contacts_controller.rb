@@ -14,7 +14,7 @@ class ContactsController < ApplicationController
 
   # GET /contacts/new
   def new
-    if Contact.where(user_id: current_user.id).count == 5
+    if Contact.where(user_id: current_user.id).count > 5
       #TODO: make this alert show properly, not needed but failsafe anyway
       #FIXME: validate this at model
       redirect_to contacts_path, :alert => 'You already have 5 contacts'
@@ -91,7 +91,7 @@ class ContactsController < ApplicationController
   def destroy
     @contact.destroy
     respond_to do |format|
-      format.html { redirect_to contacts_url, notice: 'Contact was successfully destroyed.' }
+      format.html { redirect_to edit_user_registration_path, notice: 'Contact was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

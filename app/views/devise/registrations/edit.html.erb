@@ -1,6 +1,5 @@
 <%= render 'partials/cancel_account_modal' %>
 <%= render 'partials/contact_register_modal' %>
-<p id="notice"><%= notice %></p>
 
 <h2 class="text-center">Profile details</h2>
 
@@ -122,6 +121,8 @@
 		  <% if current_user.contacts.count < 5 %>
 			<button href="#" data-target="#newContactModal" data-toggle="modal" class='btn btn-secondary text-white' type='button'>Register new contact</button>
 		  <% end %>
+		  <p id="notice"><%= notice %></p>
+		  <p id="alert"><%= alert %></p>
 	    </div>
 	  </div>
 	</div>

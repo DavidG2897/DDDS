@@ -17,7 +17,7 @@ class ContactsController < ApplicationController
     if Contact.where(user_id: current_user.id).count > 5
       #TODO: make this alert show properly, not needed but failsafe anyway
       #FIXME: validate this at model
-      redirect_to contacts_path, :alert => 'You already have 5 contacts'
+      redirect_to edit_user_registration_path, :alert => 'You already have 5 contacts'
     else
       @contact = Contact.new
     end
@@ -39,12 +39,12 @@ class ContactsController < ApplicationController
         #different users having the same contact, which is a valid scenario
         #TODO: make this alert call take style from _alerts
         #FIXME: validate this at model with dedicated function
-        redirect_to new_contact_path, :alert => 'You have already registered this contact'
+        redirect_to edit_user_registration_path, :alert => 'You have already registered this contact'
       else
         respond_to do |format|
         if @contact.save
           update_user_synched
-          format.html { redirect_to contacts_url, notice: 'Contact was successfully created.' }
+          format.html { redirect_to edit_user_registration_path, notice: 'Contact was successfully created.' }
           format.json { head :no_content }
         else
           format.html { render :new }
@@ -61,7 +61,7 @@ class ContactsController < ApplicationController
       if !(Contact.where(user_id: current_user.id, fname: contact_params[:fname]).exists? && Contact.where(user_id: current_user.id, lname: contact_params[:lname]).exists?)
         respond_to do |format|
           if @contact.update(contact_params)
-            format.html { redirect_to contacts_url, notice: 'Contact was successfully updated.' }
+            format.html { redirect_to edit_user_registration_path, notice: 'Contact was successfully updated.' }
             format.json { render :show, status: :ok, location: @contact }
           else
             format.html { render :edit }
@@ -76,7 +76,7 @@ class ContactsController < ApplicationController
       respond_to do |format|
         if @contact.update(contact_params)
           update_user_synched
-          format.html { redirect_to contacts_url, notice: 'Contact was successfully updated.' }
+          format.html { redirect_to edit_user_registration_path, notice: 'Contact was successfully updated.' }
           format.json { render :show, status: :ok, location: @contact }
         else
           format.html { render :edit }

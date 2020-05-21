@@ -47,7 +47,7 @@ class ContactsController < ApplicationController
           format.html { redirect_to edit_user_registration_path, notice: 'Contact was successfully created.' }
           format.json { head :no_content }
         else
-          format.html { render :new }
+          format.html { redirect_to edit_user_registration_path }
           format.json { render json: @contact.errors, status: :unprocessable_entity }
         end
       end

@@ -1,5 +1,4 @@
 <%= render 'partials/cancel_account_modal' %>
-<%= render 'partials/contact_register_modal' %>
 
 <h2 class="text-center">Profile details</h2>
 
@@ -89,7 +88,9 @@
       </div>
 	  <div class="card-body" style="height: 810px">
 	    <div class="row justify-content-center">
-	      <% if current_user.contacts.length() != 0 %>
+	      <% if current_user.contacts.length() == 0 %>
+		    <div class="text-xs font-weight-bold text-dark mb-1">You don't have any contacts registered</div>
+	      <% else %>
 		    <div class="pre-scrollable" style="max-height: 710px; width: 100%;">
 		      <table class="table table-striped">
 			    <thead>
@@ -107,37 +108,23 @@
 					  <td><%= contact.fname %></td>
 					  <td><%= contact.lname %></td>
 					  <td><%= contact.cellphone %></td>
-					  <!-- TODO make this links show a modal for user editing and deletion -->
 					  <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
 					  <td><%= link_to 'Delete', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 				    </tr>
 				  <% end %>
 			    </tbody>
 			  </table>
-			</div>
-	      <% else %>
-		    <div class="text-xs font-weight-bold text-dark mb-1">You don't have any contacts registered</div>
+			</div>		
 		  <% end %>
-		  <% if current_user.contacts.count < 5 %>
-			<button href="#" data-target="#newContactModal" data-toggle="modal" class='btn btn-secondary text-white' type='button'>Register new contact</button>
-		  <% end %>
-	    </div>
-		<div class="row justify-content-center">
-		  <% if !@contact.nil? %>
-		    <% if @contact.errors.any? %>
-			  <div id="error_explanation">
-			    <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
-			    <ul>
-			      <% @contact.errors.full_messages.each do |message| %>
-				    <li><%= message %></li>
-				  <% end %>
-			    </ul>
-			  </div>
-		    <% end %>
-		  <% end %>
-		  <p id="notice"><%= notice %></p>
-		  <p id="alert"><%= alert %></p>
 		</div>
+		<% if current_user.contacts.count < 5 %>
+		  <div class="row justify-content-center">
+			<a href="<%= new_contact_path%>" class='btn btn-secondary text-white' type='button'>Register new contact</a>
+		  </div>
+		<% end %>
+		<div class="row justify-content-center">
+		  <%= link_to 'Contact details', contacts_path, method: :get %>
+	    </div>
 	  </div>
 	</div>
   </div>

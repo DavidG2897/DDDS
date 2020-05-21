@@ -60,29 +60,34 @@
 		      <%= @current_user.device.dispid %>
 			</div>
 			<div class="col-lg-6 mb-4">
-			  <button class="btn btn-secondary" data-method="get" href="<%= edit_device_path(current_user.device) %>">Change associated device</button>
+			  <a class="btn btn-secondary" data-method="get" href="<%= edit_device_path(current_user.device) %>">Change associated device</a>
 			</div>
 		  <% else %>
 		    <%= link_to 'Register your device', new_device_path, method: :get %>
 		  <% end %>
 	    </div>
-
+		
+	    <div class="row justify-content-center">
+	      <% if !current_user.device.nil? %>
+		    <% if !@current_user.synched %>
+			  <div class="col-lg-6 mb-4 text-center">
+		        <u1 class="text-xs font-weight-bold mb-1 text-danger">Not synched</u1>
+			  </div>
+			  <div class="col-lg-6 mb-4 text-center">
+			    <a class="btn btn-secondary" data-method="patch" href="synch">Synchronize device</a>
+			  </div>
+		    <% else %>
+		      <u1 class="text-xs font-weight-bold mb-1 text-success">Synched</u1>
+		    <% end %>
+	      <% end %>
+	    </div>
+		
 	    <div class="row">
 	      <% if !@current_user.device.nil? %>
 		    <%= link_to "Contacts", contacts_path %>
 	      <% end %>
 	    </div>
-	  
-	    <div class="row">
-	      <% if !current_user.device.nil? %>
-		    <% if !@current_user.synched %>
-		      <u1 class="text-danger">Not synched</u1>
-		      <%= link_to "Synch", '/synch/', method: :patch%>
-		    <% else %>
-		      <u1>Synched</u1>
-		    <% end %>
-	      <% end %>
-	    </div>
+		
 	  </div>
 	</div>
   </div>

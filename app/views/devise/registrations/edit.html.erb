@@ -7,7 +7,7 @@
       <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Account</h6>
       </div>
-      <div class="card-body" style="max-height: 832px">
+      <div class="card-body" style="height: 810px">
 	    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 	      <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -71,13 +71,13 @@
 	      <% if !current_user.device.nil? %>
 		    <% if !@current_user.synched %>
 			  <div class="col-lg-6 mb-4 text-center">
-		        <u1 class="text-xs font-weight-bold mb-1 text-danger">Not synched</u1>
+		        <u1 class="text-xs font-weight-bold mb-1 text-danger">Device not synchronized</u1>
 			  </div>
 			  <div class="col-lg-6 mb-4 text-center text-white">
 			    <a class="btn btn-secondary" data-method="patch" href="/synch">Synchronize device</a>
 			  </div>
 		    <% else %>
-		      <u1 class="text-xs font-weight-bold mb-1 text-success">Synched</u1>
+		      <u1 class="text-xs font-weight-bold mb-1 text-success">Synchronized</u1>
 		    <% end %>
 	      <% end %>
 	    </div>

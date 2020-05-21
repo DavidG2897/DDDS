@@ -42,7 +42,7 @@
 	      <div class="actions">
 		    <%= f.submit "Update" %>
 	      </div>
-		  <button href="#" data-target="#cancelAccountModal" data-toggle="modal" class='btn btn-secondary' type='button'>Cancel my account</button>
+		  <button href="#" data-target="#cancelAccountModal" data-toggle="modal" class='btn btn-secondary text-white' type='button'>Cancel my account</button>
 	    <% end %>
 	  </div>
 	</div>
@@ -55,12 +55,12 @@
       <div class="card-body" style="max-height: 832px">
 	    <div class="row">
 		  <% if !@current_user.device.nil? %>
-		    <div class="col-lg-6 mb-4">
+		    <div class="col-lg-6 mb-4 text-center">
 		      <div class="text-xs font-weight-bold text-dark mb-1">Registered device: </div>
 		      <%= @current_user.device.dispid %>
 			</div>
-			<div class="col-lg-6 mb-4">
-			  <a class="btn btn-secondary" data-method="get" href="<%= edit_device_path(current_user.device) %>">Change associated device</a>
+			<div class="col-lg-6 mb-4 text-center">
+			  <a class="btn btn-secondary text-white" data-method="get" href="<%= edit_device_path(current_user.device) %>">Change associated device</a>
 			</div>
 		  <% else %>
 		    <%= link_to 'Register your device', new_device_path, method: :get %>
@@ -73,8 +73,8 @@
 			  <div class="col-lg-6 mb-4 text-center">
 		        <u1 class="text-xs font-weight-bold mb-1 text-danger">Not synched</u1>
 			  </div>
-			  <div class="col-lg-6 mb-4 text-center">
-			    <a class="btn btn-secondary" data-method="patch" href="synch">Synchronize device</a>
+			  <div class="col-lg-6 mb-4 text-center text-white">
+			    <a class="btn btn-secondary" data-method="patch" href="/synch">Synchronize device</a>
 			  </div>
 		    <% else %>
 		      <u1 class="text-xs font-weight-bold mb-1 text-success">Synched</u1>

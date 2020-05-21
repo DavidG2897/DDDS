@@ -81,10 +81,14 @@
 		    <% end %>
 	      <% end %>
 	    </div>
-		
+	  </div>
+	  <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Your contacts</h6>
+      </div>
+	  <div class="card-body" style="height: 810px">
 	    <div class="row justify-content-center">
-	      <% if !@current_user.device.nil? %>
-		    <div class="pre-scrollable" style="max-height: 710px">
+	      <% if current_user.contacts.length() != 0 %>
+		    <div class="pre-scrollable" style="max-height: 710px; width: 100%;">
 		      <table class="table table-striped">
 			    <thead>
 				  <tr>
@@ -114,7 +118,6 @@
 		    <div class="text-xs font-weight-bold text-dark mb-1">You don't have any contacts registered</div>
 		  <% end %>
 	    </div>
-		
 	  </div>
 	</div>
   </div>

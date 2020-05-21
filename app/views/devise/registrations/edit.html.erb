@@ -54,10 +54,14 @@
       </div>
       <div class="card-body" style="max-height: 832px">
 	    <div class="row">
-        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">registered device:</div>
 		  <% if !@current_user.device.nil? %>
-		    <%= @current_user.device.dispid %>
-		    <%= link_to 'Change associated device', edit_device_path(current_user.device) %>
+		    <div class="col-lg-6 mb-4">
+		      <div class="text-xs font-weight-bold text-dark mb-1">Registered device: </div>
+		      <%= @current_user.device.dispid %>
+			</div>
+			<div class="col-lg-6 mb-4">
+			  <button class="btn btn-secondary" data-method="get" href="<%= edit_device_path(current_user.device) %>">Change associated device</button>
+			</div>
 		  <% else %>
 		    <%= link_to 'Register your device', new_device_path, method: :get %>
 		  <% end %>
@@ -72,7 +76,7 @@
 	    <div class="row">
 	      <% if !current_user.device.nil? %>
 		    <% if !@current_user.synched %>
-		      <u1>Not synched</u1>
+		      <u1 class="text-danger">Not synched</u1>
 		      <%= link_to "Synch", '/synch/', method: :patch%>
 		    <% else %>
 		      <u1>Synched</u1>

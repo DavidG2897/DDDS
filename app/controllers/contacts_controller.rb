@@ -4,12 +4,14 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
+    @stype = params[:stype]
     @contacts = current_user.contacts
   end
 
   # GET /contacts/1
   # GET /contacts/1.json
   def show
+    redirect_to contacts_path
   end
 
   # GET /contacts/new

@@ -123,8 +123,7 @@
 		  <% end %>
 	    </div>
 		<div class="row justify-content-center">
-		<%= form_with(model: contact, local: true) do |form| %>
-		  <% if contact.errors.any? %>
+		  <% if Contact.new.errors.any? %>
 			<div id="error_explanation">
 			  <h2><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
 			  <ul>
@@ -134,7 +133,6 @@
 			  </ul>
 			</div>
 		  <% end %>
-		<% end %>
 		  <p id="notice"><%= notice %></p>
 		  <p id="alert"><%= alert %></p>
 		</div>

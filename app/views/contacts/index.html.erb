@@ -4,41 +4,46 @@
 
 <!-- TODO style this view -->
 
-<div class="row">
-  <table>
-    <thead>
-      <tr>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Cellphone</th>
-	    <th>Registration date</th>
-	    <th>Last update date</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
+<div class="row justify-content-center">
+  <div class="col-md-12 text-center">
+    <div class="card shadow h-100 py-2">
+      <div class="card-body w-100">
+		<table>
+		  <thead>
+			<tr>
+			  <th>First name</th>
+			  <th>Last name</th>
+			  <th>Cellphone</th>
+			  <th>Registration date</th>
+			  <th>Last update date</th>
+			  <th colspan="3"></th>
+			</tr>
+		  </thead>
 
-    <tbody>
-      <% @contacts.each do |contact| %>
-        <tr>
-          <td><%= contact.fname %></td>
-          <td><%= contact.lname %></td>
-          <td><%= contact.cellphone %></td>
-	  	  <td><%= contact.created_at %></td>
-	  	  <td><%= contact.updated_at %></td>
-          <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
-          <td><%= link_to 'Delete', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+		  <tbody>
+			<% @contacts.each do |contact| %>
+			  <tr>
+				<td><%= contact.fname %></td>
+				<td><%= contact.lname %></td>
+				<td><%= contact.cellphone %></td>
+				<td><%= contact.created_at %></td>
+				<td><%= contact.updated_at %></td>
+				<td><%= link_to 'Edit', edit_contact_path(contact) %></td>
+				<td><%= link_to 'Delete', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			  </tr>
+			<% end %>
+		  </tbody>
+		</table>
 
-  <% if current_user.contacts.count < 5 %>
-	<div class="row justify-content-center">
-	  <a href="<%= new_contact_path%>" class='btn btn-secondary text-white' type='button'>Register new contact</a>
+		<% if current_user.contacts.count < 5 %>
+		  <div class="row justify-content-center">
+			<a href="<%= new_contact_path%>" class='btn btn-secondary text-white' type='button'>Register new contact</a>
+		  </div>
+		<% end %>
+		<% if @stype=='prof' %>
+		  <%= link_to 'Back to profile', edit_user_registration_path %>
+		<% end %>
+	  </div>	
 	</div>
-  <% end %>
-  <% if @stype=='prof' %>
-    <%= link_to 'Back to profile', edit_user_registration_path %>
-  <% end %>
-  
+  </div>
 </div>

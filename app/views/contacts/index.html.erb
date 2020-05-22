@@ -17,7 +17,6 @@
 			  <th>Registration date</th>
 			  <th>Last update date</th>
 			  <th>Options</th>
-			  <th colspan="3"></th>
 			</tr>
 		  </thead>
 
@@ -29,8 +28,16 @@
 				<td><%= contact.cellphone %></td>
 				<td><%= contact.created_at %></td>
 				<td><%= contact.updated_at %></td>
-				<td><%= link_to 'Edit', edit_contact_path(contact) %></td>
-				<td><%= link_to 'Delete', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				<td>
+				  <div class="row justify-content-center">
+				    <div class="col-sm-3 mb-4">
+				      <%= link_to 'Edit', edit_contact_path(contact) %>
+					</div>
+					<div class="col-sm-6 mb-4">
+				      <%= link_to 'Delete', contact, method: :delete, data: { confirm: 'Are you sure?' } %>
+					</div>
+				  </div>
+				</td>
 			  </tr>
 			<% end %>
 		  </tbody>

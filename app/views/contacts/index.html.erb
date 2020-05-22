@@ -1,3 +1,5 @@
+<%= render 'partials/contact_deletion_modal' %>
+
 <h1 class="text-center">Your contacts</h1>
 <br /><br />
 <p id="notice"><%= notice %></p>
@@ -34,7 +36,7 @@
 				      <%= link_to 'Edit', edit_contact_path(contact) %>
 					</div>
 					<div class="col-sm-6 mb-4">
-				      <%= link_to 'Delete', contact, method: :delete, data: { confirm: 'Are you sure?' } %>
+  				      <a href="#" data-target="#contactDeletionModal" data-toggle="modal">Delete</a>
 					</div>
 				  </div>
 				</td>

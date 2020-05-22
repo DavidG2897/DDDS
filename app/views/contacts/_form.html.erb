@@ -11,22 +11,45 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :fname %>
-    <%= form.text_field :fname %>
-  </div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-3 text-center">
+      <div class="card shadow h-100 py-2">
+        <div class="card-body w-100">
 
-  <div class="field">
-    <%= form.label :lname %>
-    <%= form.text_field :lname %>
-  </div>
+		  <div class="row d-flex no-gutters align-items-center">
+		    <div class="col-6 h6 text-left">
+			   <%= form.label :fname %>
+			</div>
+			<div class="col-6">
+			  <%= form.text_field :fname %>
+			</div>
+		  </div>
 
-  <div class="field">
-    <%= form.label :cellphone %>
-    <%= form.text_field :cellphone %>
-  </div>
-  
-  <div class="actions">
-    <%= form.submit %>
+		  <div class="row d-flex no-gutters align-items-center">
+		    <div class="col-6 h6 text-left">
+			  <%= form.label :lname %>
+			</div>
+			<div class="col-6">
+			  <%= form.text_field :lname %>
+			</div>
+		  </div>
+
+		  <div class="row d-flex no-gutters align-items-center">
+		    <div class="col-6 h6 text-left">
+			  <%= form.label :cellphone %>
+			</div>
+			<div class="col-6">
+			  <%= form.text_field :cellphone %>
+			</div>
+		  </div>
+		  
+		  <div class="actions row d-flex justify-content-center">
+		    <div class="col-md-3">
+			  <%= form.submit, :class => "btn btn-secondary" %>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
   </div>
 <% end %>

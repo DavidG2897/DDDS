@@ -1,10 +1,6 @@
-<%= render 'partials/contact_deletion_modal' %>
-
 <h1 class="text-center">Your contacts</h1>
 <br /><br />
 <p id="notice"><%= notice %></p>
-
-<!-- TODO style this view -->
 
 <div class="row justify-content-center">
   <div class="col-md-12 text-center">
@@ -37,6 +33,7 @@
 					</div>
 					<div class="col-sm-6 mb-4">
   				      <a href="#" data-target="#contactDeletionModal" data-toggle="modal">Delete</a>
+					  <%= render 'partials/contact_deletion_modal' %>
 					</div>
 				  </div>
 				</td>
@@ -47,7 +44,7 @@
 
 		<% if current_user.contacts.count < 5 %>
 		  <div class="row justify-content-center">
-			<a href="<%= new_contact_path%>" class='btn btn-secondary text-white' type='button'>Register new contact</a>
+			<a href="<%= new_contact_path %>" class='btn btn-secondary text-white' type='button'>Register new contact</a>
 		  </div>
 		<% end %>
 		<% if @stype=='prof' %>
